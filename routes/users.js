@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require('passport-facebook').Strategy;
 
 var User = require('../models/User');
 
@@ -40,11 +41,13 @@ router.post('/register', function (req, res, next) {
     });
   } else {
     var newUser = new User({
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      username: username,
-      password: password,
+      // local: {
+        firstName: firstName,
+        lastName: lastName,
+        email: email,
+        username: username,
+        password: password,
+      // },
     });
     User.createUser(newUser, function (err, user) {
       if (err) throw err;
@@ -55,6 +58,11 @@ router.post('/register', function (req, res, next) {
     res.redirect('login');
   }
 });
+
+//1 change authenticate to authorize
+router.get('/auth/facebook', passport.authorize('facebook', { scope: ['email'] }));
+
+router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/users/login' }));
 
 router.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }), function (req, res) {
     res.redirect('/');
