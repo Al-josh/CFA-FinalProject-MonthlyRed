@@ -48,6 +48,7 @@ app.use(session({
 //passport init
 app.use(passport.initialize());
 app.use(passport.session());
+require('./config/passport')(passport);
 
 app.use(expressValidator({
   errorFormatter: function (param, msg, value) {
