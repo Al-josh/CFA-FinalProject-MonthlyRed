@@ -12,6 +12,7 @@ var bodyParser = require('body-parser');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
+var MongoStore = require('connect-mongo')(session);
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/MonthlyRed');
@@ -44,6 +45,7 @@ app.use(session({
   secret: 'secret',
   saveUninitialized: true,
   resave: true,
+  store: new MongoStore({ mongooseConnection: mongoose.connection })
 }));
 
 //passport init
