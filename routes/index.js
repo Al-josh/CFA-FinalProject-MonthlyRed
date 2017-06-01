@@ -12,7 +12,7 @@ router.get('/', ensureAuthenticated, function (req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/dashboard', ensureAuthenticated, function (req, res, next) {
+router.get('/dashboard', ensureAuthenticated, ensureAdmin, function (req, res, next) {
   const userId = req.session.passport.user;
   User.find({})
   .then(user => {
@@ -27,6 +27,15 @@ function ensureAuthenticated(req, res, next) {
   } else {
     req.flash('error_msg', 'You are not logged in');
     res.redirect('/users/login');
+  }
+}
+
+function ensureAdmin(req, res, next) {
+  if (req.user.role === 'admin') {
+    return next();
+  } else {
+    req.flash('error_msg', 'You are not permitted to enter this page');
+    res.redirect('/');
   }
 }
 

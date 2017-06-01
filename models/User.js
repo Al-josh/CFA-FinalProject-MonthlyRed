@@ -18,12 +18,20 @@ var UserSchema = mongoose.Schema({
     lastName: {
       type: String,
     },
+    role: {
+      type: String,
+      default: 'normalUser',
+    },
     facebook: {
       id: String,
       token: String,
       email: String,
       firstName: String,
       lastName: String,
+      role: {
+        type: String,
+        default: 'normalUser',
+      },
     },
   });
 
