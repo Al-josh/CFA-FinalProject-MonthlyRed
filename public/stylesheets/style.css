@@ -77,3 +77,9 @@ body {
     border-bottom: 0;
   }
 }
+
+.background-login {
+  background-image: url('http://res.cloudinary.com/dzctpgu9d/image/upload/v1496278499/Capella_Vineyard_1-min_xwogwm.jpg');
+  background-size: cover;
+  height: 100vh;
+}

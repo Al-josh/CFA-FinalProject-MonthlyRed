@@ -1,15 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../models/User');
+var Cart = require('../models/Cart');
+var Product = require('../models/Product');
+
 
 /* GET home page. */
-router.get('/', ensureAuthenticated, function (req, res, next) {
-  const userId = req.session.passport.user;
-
+router.get('/', function (req, res, next) {
   // console.log('userId', userId);
   // Do mongoose call to get User object
   // Pass in user object into the render function
-  res.render('index', { title: 'Express' });
+  res.render('home', { title: 'Express' });
+});
+
+router.get('/about', function (req, res, next) {
+  res.render('about', { title: 'About' });
 });
 
 router.get('/dashboard', ensureAuthenticated, ensureAdmin, function (req, res, next) {
@@ -18,8 +23,39 @@ router.get('/dashboard', ensureAuthenticated, ensureAdmin, function (req, res, n
   .then(user => {
     res.render('dashboard', { user: user });
   });
-
 });
+
+router.get('/addToShoppingcart/:id', ensureAuthenticated, function (req, res, next) {
+  var productID = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+  Product.findById(productID, function (err, product) {
+    if (err) {
+      return res.redirect('/');
+    }
+
+    cart.add(product, product.id);
+    req.session.cart = cart;
+    res.redirect('/shoppingcart');
+  });
+});
+
+router.get('/shoppingcart', function (req, res, next) {
+  if (!req.session.cart) {
+    return res.render('shoppingCart', { products: null });
+  }
+
+  var cart = new Cart(req.session.cart);
+  res.render('shoppingCart', { products: cart.generateArray(), totalPrice: cart.totalPrice });
+});
+
+router.get('/checkout', function (req, res, next) {
+  if (!req.session.cart) {
+    return res.redirect('/shoppingcart');
+  }
+  var cart = new Cart(req.session.cart);
+  res.render('checkout', { total: cart.totalPrice });
+})
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {

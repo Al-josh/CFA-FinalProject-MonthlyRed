@@ -45,7 +45,7 @@ app.use(session({
   secret: 'secret',
   saveUninitialized: true,
   resave: true,
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
+  store: new MongoStore({ mongooseConnection: mongoose.connection }),
 }));
 
 //passport init

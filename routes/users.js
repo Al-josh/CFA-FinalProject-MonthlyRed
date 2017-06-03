@@ -5,6 +5,7 @@ var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 
 var User = require('../models/User');
+var Product = require('../models/Product');
 
 /* GET users listing. */
 router.get('/register', function (req, res, next) {
@@ -23,6 +24,8 @@ router.post('/register', function (req, res, next) {
   var username = req.body.username;
   var password = req.body.password;
   var password2 = req.body.password2;
+  var password2 = req.body.password2;
+  var ageConfirmation = req.body.ageConfirmation;
 
   //Validation
   req.checkBody('firstName', 'First name is required').notEmpty();
@@ -32,6 +35,7 @@ router.post('/register', function (req, res, next) {
   req.checkBody('username', 'Username is required').notEmpty();
   req.checkBody('password', 'Password is required').notEmpty();
   req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+  req.checkBody('ageConfirmation', 'Please confirm if you are 18 years of age of older').notEmpty();
 
   var errors = req.validationErrors();
 
@@ -57,12 +61,43 @@ router.post('/register', function (req, res, next) {
   }
 });
 
+router.get('/profile', ensureAuthenticated, function (req, res, next) {
+  Product.find({})
+  .then(products => {
+    res.render('profile', { title: 'Profile', products: products });
+  });
+});
+
+router.post('/profile', ensureAuthenticated, function (req, res, next) {
+  const name = req.body.productName;
+  const description = req.body.productDescription;
+  const price = req.body.productPrice;
+  let product = new Product();
+  product.name = name;
+  product.description = description;
+  product.price = price;
+  console.log(product);
+  product.save()
+    .then(() => {
+      res.redirect('/users/profile');
+    });
+});
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    req.flash('error_msg', 'You are not logged in');
+    res.redirect('/users/login');
+  }
+}
+
 //1 change authenticate to authorize
 router.get('/auth/facebook', passport.authorize('facebook', { scope: ['email'] }));
 
-router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/', failureRedirect: '/users/login' }));
+router.get('/auth/facebook/callback', passport.authenticate('facebook', { successRedirect: '/users/profile', failureRedirect: '/users/login' }));
 
-router.post('/login', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/users/login', failureFlash: true }), function (req, res) {
+router.post('/login', passport.authenticate('local', { successRedirect: '/users/profile', failureRedirect: '/users/login', failureFlash: true }), function (req, res) {
     res.redirect('/');
   });
 
