@@ -62,7 +62,7 @@ router.post('/checkout', function (req, res, next) {
   }
 
   var cart = new Cart(req.session.cart);
-  var stripe = require('stripe')('sk_test_Xsh7lzUoFoqc1iGv7SsPbq8o');
+  var stripe = require('stripe')(configAuth.STRIPE_TEST_SECRET_KEY);
   console.log('bodyyyyy', req.body);
   stripe.charges.create({
     amount: cart.totalPrice * 100,

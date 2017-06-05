@@ -1,4 +1,5 @@
 require('dotenv').config();
+var configAuth = require('./config/auth');
 var express = require('express');
 var expressValidator = require('express-validator');
 var exphbs = require('express-handlebars');
@@ -13,7 +14,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var MongoStore = require('connect-mongo')(session);
-var stripe = require('stripe')('sk_test_Xsh7lzUoFoqc1iGv7SsPbq8o');
+var stripe = require('stripe')(configAuth.STRIPE_TEST_SECRET_KEY);
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/MonthlyRed');
