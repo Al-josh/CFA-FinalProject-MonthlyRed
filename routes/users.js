@@ -62,9 +62,10 @@ router.post('/register', function (req, res, next) {
 });
 
 router.get('/profile', ensureAuthenticated, function (req, res, next) {
+  var successMsg = req.flash('success')[0];
   Product.find({})
   .then(products => {
-    res.render('profile', { title: 'Profile', products: products });
+    res.render('profile', { title: 'Profile', products: products, successMsg: successMsg, noMessages: !successMsg });
   });
 });
 

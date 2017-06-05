@@ -13,6 +13,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var MongoStore = require('connect-mongo')(session);
+var stripe = require('stripe')('sk_test_Xsh7lzUoFoqc1iGv7SsPbq8o');
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/MonthlyRed');
@@ -102,10 +103,5 @@ app.set('port', (3001));
 app.listen(app.get('port'), function () {
   console.log('Server started on port ' + app.get('port'));
 });
-
-// render the error page
-//   res.status(err.status || 500);
-//   res.render('error');
-// });
 
 module.exports = app;

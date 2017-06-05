@@ -19,6 +19,7 @@
     "express-messages": "*",
     "express-session": "*",
     "express-validator": "*",
+    "jquery": "^3.2.1",
     "mongodb": "*",
     "mongoose": "*",
     "morgan": "~1.8.1",
@@ -26,6 +27,7 @@
     "passport-facebook": "^2.1.1",
     "passport-http": "*",
     "passport-local": "*",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "stripe": "^4.22.0"
   }
 }

@@ -3,13 +3,10 @@ var router = express.Router();
 var User = require('../models/User');
 var Cart = require('../models/Cart');
 var Product = require('../models/Product');
-
+var configAuth = require('../config/auth');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-  // console.log('userId', userId);
-  // Do mongoose call to get User object
-  // Pass in user object into the render function
   res.render('home', { title: 'Express' });
 });
 
@@ -53,9 +50,36 @@ router.get('/checkout', function (req, res, next) {
   if (!req.session.cart) {
     return res.redirect('/shoppingcart');
   }
+
   var cart = new Cart(req.session.cart);
-  res.render('checkout', { total: cart.totalPrice });
-})
+  var errMsg = req.flash('error')[0];
+  res.render('checkout', { total: cart.totalPrice, errMsg: errMsg, noError: !errMsg });
+});
+
+router.post('/checkout', function (req, res, next) {
+  if (!req.session.cart) {
+    return res.redirect('/shoppingcart');
+  }
+
+  var cart = new Cart(req.session.cart);
+  var stripe = require('stripe')('sk_test_Xsh7lzUoFoqc1iGv7SsPbq8o');
+  console.log('bodyyyyy', req.body);
+  stripe.charges.create({
+    amount: cart.totalPrice * 100,
+    currency: 'aud',
+    source: req.body.stripeToken, // obtained with Stripe.js
+    description: 'Test Charge',
+  }, function (err, charge) {
+    if (err) {
+      req.flash('error', err.message);
+      return res.redirect('/checkout');
+    }
+
+    req.flash('success', 'Successfully bought product!');
+    req.session.cart = null;
+    res.redirect('/');
+  });
+});
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) {
