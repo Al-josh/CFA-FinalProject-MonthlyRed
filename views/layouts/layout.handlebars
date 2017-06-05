@@ -3,13 +3,17 @@
   <head>
     <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   </head>
   <body>
       <div class="header clearfix">
         <nav>
           <ul class="nav nav-pills pull-right">
+            <li role="presentation"><a href="/about">About Us</a></li>
             {{#if user}}
             <li role="presentation"><a href="/">Home</a></li>
+            <li role="presentation"><a href="/users/profile">{{user.firstName}}{{user.facebook.firstName}} {{user.lastName}}{{user.facebook.lastName}}</a></li>
+            <li role="presentation"><a href="/shoppingcart">Shopping Cart</a></li>
             <li role="presentation"><a href="/users/logout">Logout</a></li>
             {{else}}
             <li role="presentation"><a href="/users/login">Login</a></li>
@@ -32,6 +36,7 @@
       {{{body}}}
       <footer class="footer">
         <p>&copy; 2017 Monthly Red</p>
+        <p> Under the Liquor Act 2007, it is against the law to sell or supply alcohol to, or to obtain alcohol on behalf of, a person under the age of 18 years. Your offer to purchase is subject to our acceptance and declaration by you of being over 18 years of age, and the availability of stock. Find out more at www.drinkwise.org.au. NSW Package Liquor License LIQW824013493 </p>
       </footer>
   </body>
 </html>

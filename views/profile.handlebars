@@ -1,0 +1,44 @@
+<div class="container">
+  <p> Hello {{user.firstName}}{{user.facebook.firstName}}, welcome to Monthly Red<p>
+
+  <form action="/users/profile" method="post">
+    <p>Name:</p>
+    <input type="text" name="productName">
+    <p>Description: </p>
+    <input type="text" name="productDescription">
+    <p>Price: </p>
+    <input type="text" name="productPrice">
+    <input type="submit">
+  </form>
+
+  <div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+      <div id="success" class="alert alert-success" {{#if noMessages}}hidden{{/if}}>
+        {{ successMsg }}
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    {{#each products}}
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="http://res.cloudinary.com/dzctpgu9d/image/upload/v1496288185/handpickedwines_clare_riesling-min_mb6i8e.jpg" alt="...">
+          <div class="caption">
+            <h5>{{name}} </h5>
+            <p class="description">{{description}}</p>
+            <p><a href="/addToShoppingcart/{{this._id}}" class="btn btn-primary" role="button">{{price}}</a> <a href="#" class="btn btn-default" role="button">24 pc</a></p>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+<!-- <ul>
+  {{#each products}}
+    <li>{{name}}</li>
+    <li>{{description}}</li>
+    <li>{{price}}</li>
+  {{/each}}
+</ul> -->
