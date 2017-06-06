@@ -4,6 +4,7 @@ var User = require('../models/User');
 var Cart = require('../models/Cart');
 var Product = require('../models/Product');
 var configAuth = require('../config/auth');
+var Order = require('../models/Order');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -15,10 +16,17 @@ router.get('/about', function (req, res, next) {
 });
 
 router.get('/dashboard', ensureAuthenticated, ensureAdmin, function (req, res, next) {
-  const userId = req.session.passport.user;
-  User.find({})
+    const userId = req.session.passport.user;
+    User.find({})
   .then(user => {
-    res.render('dashboard', { user: user });
+      res.render('dashboard', { user: user });
+    });
+  });
+
+router.get('/dashboard/orders', ensureAuthenticated, ensureAdmin, function (req, res, next) {
+  Order.find({})
+  .then(order => {
+    res.render('adminorders', { order: order });
   });
 });
 
@@ -37,7 +45,26 @@ router.get('/addToShoppingcart/:id', ensureAuthenticated, function (req, res, ne
   });
 });
 
-router.get('/shoppingcart', function (req, res, next) {
+router.get('/reduce/:id', ensureAuthenticated, function (req, res, next) {
+  var productID = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+  cart.reduceByOne(productID);
+  req.session.cart = cart;
+  res.redirect('/shoppingcart');
+});
+
+router.get('/remove/:id', ensureAuthenticated, function (req, res, next) {
+  var productID = req.params.id;
+  var cart = new Cart(req.session.cart ? req.session.cart : {});
+
+  cart.removeItem(productID);
+  req.session.cart = cart;
+  res.redirect('/shoppingcart');
+});
+
+
+router.get('/shoppingcart', ensureAuthenticated, function (req, res, next) {
   if (!req.session.cart) {
     return res.render('shoppingCart', { products: null });
   }
@@ -63,7 +90,7 @@ router.post('/checkout', function (req, res, next) {
 
   var cart = new Cart(req.session.cart);
   var stripe = require('stripe')(configAuth.STRIPE_TEST_SECRET_KEY);
-  console.log('bodyyyyy', req.body);
+
   stripe.charges.create({
     amount: cart.totalPrice * 100,
     currency: 'aud',
@@ -75,9 +102,23 @@ router.post('/checkout', function (req, res, next) {
       return res.redirect('/checkout');
     }
 
-    req.flash('success', 'Successfully bought product!');
-    req.session.cart = null;
-    res.redirect('/');
+    var order = new Order({
+      user: req.user,
+      cart: cart,
+      address: req.body.address,
+      name: req.body.name,
+      paymentId: charge.id,
+    });
+    console.log('orderrrrr!!!!!:', order);
+    order.save(function (err, result) {
+                if (err) {
+                  console.log('ERROR ERROR ERROR', err);
+                }
+
+                req.flash('success', 'Successfully bought product!');
+                req.session.cart = null;
+                res.redirect('/');
+              });
   });
 });
 

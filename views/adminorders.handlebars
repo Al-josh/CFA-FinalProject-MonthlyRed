@@ -1,0 +1,22 @@
+<div class="container">
+  <h3>My orders</h3>
+  {{#each order}}
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <ul class="list-group">
+          <span class="badge">User: {{this.user}}</span>
+          <span class="badge">{{this.cart.items}}</span>
+
+          {{#each this.items}}
+            <li class="list-group-item">
+              <span class="badge">{{this.user}}</span>
+              {{this.name}} | {{this.qty}}
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class="panel-footer">AUD {{this.cart.totalPrice}}</div>
+    </div>
+  {{/each}}
+  </div>
+</div>

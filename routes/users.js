@@ -6,6 +6,8 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 
 var User = require('../models/User');
 var Product = require('../models/Product');
+var Order = require('../models/Order');
+var Cart = require('../models/Cart');
 
 /* GET users listing. */
 router.get('/register', function (req, res, next) {
@@ -69,6 +71,22 @@ router.get('/profile', ensureAuthenticated, function (req, res, next) {
   });
 });
 
+router.get('/myorders', ensureAuthenticated, function (req, res, next) {
+  Order.find({ user: req.user }, function (err, orders) {
+    if (err) {
+      return res.write('Error!');
+    }
+
+    var cart;
+    orders.forEach(function (order) {
+      cart = new Cart(order.cart);
+      order.items = cart.generateArray();
+    });
+
+    res.render('myorders', { title: 'Profile', orders: orders });
+  });
+});
+
 router.post('/profile', ensureAuthenticated, function (req, res, next) {
   const name = req.body.productName;
   const description = req.body.productDescription;
@@ -80,7 +98,7 @@ router.post('/profile', ensureAuthenticated, function (req, res, next) {
   console.log(product);
   product.save()
     .then(() => {
-      res.redirect('/users/profile');
+      res.redirect('/');
     });
 });
 
