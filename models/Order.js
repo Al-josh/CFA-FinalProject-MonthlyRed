@@ -2,10 +2,10 @@ var mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 var orderSchema = new Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+  firstName: { type: String },
+  lastName: { type: String },
+  email: { type: String },
   cart: { type: Object, required: true },
-  // address: { type: String, required: true },
-  // name: { type: String, required: true },
   paymentId: { type: String, required: true },
 });
 

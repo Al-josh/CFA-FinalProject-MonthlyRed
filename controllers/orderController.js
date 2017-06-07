@@ -49,10 +49,10 @@ exports.postCheckout = (req, res, next) => {
     }
 
     var order = new Order({
-      user: req.user,
+      firstName: req.user.firstName,
+      lastName: req.user.lastName,
+      email: req.user.email,
       cart: cart,
-      address: req.body.address,
-      name: req.body.name,
       paymentId: charge.id,
     });
     console.log('orderrrrr!!!!!:', order);
