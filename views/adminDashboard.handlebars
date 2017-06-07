@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row adminButtons">
+    <div class="col-sm-4 col-md-4 adminButton1">
+      <a href="/dashboard" class="textbuttons">Dashboard</a>
+    </div>
+    <div class="col-sm-4 col-md-4 adminButton2">
+      <a href="/dashboard/orders" class="textbuttons">Orders</a>
+    </div>
+    <div class="col-sm-4 col-md-4 adminButton3">
+      <a href="/dashboard/quizrezult" class="textbuttons">Quiz Results</a>
+    </div>
+  </div>
+  <table class="table">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+  </tr>
+  {{#each user}}
+  <tr>
+    <td>{{firstName}}{{facebook.firstName}}</td>
+    <td>{{lastName}}{{facebook.lastName}}</td>
+    <td>{{email}}{{facebook.email}}</td>
+  </tr>
+  {{/each}}
+  </table>
+</div>

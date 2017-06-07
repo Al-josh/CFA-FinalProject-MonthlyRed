@@ -10,6 +10,9 @@
           <ul class="nav nav-pills pull-right">
             <li role="presentation"><a href="/about">About Us</a></li>
             {{#if user}}
+            {{#compare user.role '===' admin}}
+            <li role="presentation"><a href="/">ADMIN</a></li>
+            {{/compare}}
             <li role="presentation"><a href="/">Home</a></li>
             <li role="presentation"><a href="/users/profile">{{user.firstName}}{{user.facebook.firstName}} {{user.lastName}}{{user.facebook.lastName}}</a></li>
             <li role="presentation"><a href="/shoppingcart">Shopping Cart</a></li>
