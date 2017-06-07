@@ -4,13 +4,14 @@
     <div class="panel panel-default">
       <div class="panel-body">
         <ul class="list-group">
-          <span class="badge">User: {{this.user}}</span>
+          <span class="badge">User: {{this.firstName}}{{this.lastName}}</span>
+          <span class="badge">Email: {{this.email}}</span>
           <span class="badge">{{this.cart.items}}</span>
 
-          {{#each this.items}}
+          {{#each this.cart.items}}
             <li class="list-group-item">
               <span class="badge">{{this.user}}</span>
-              {{this.name}} | {{this.qty}}
+              {{this.name}} | Quantity {{this.qty}}
             </li>
           {{/each}}
         </ul>

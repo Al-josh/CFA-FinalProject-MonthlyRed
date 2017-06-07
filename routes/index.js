@@ -6,6 +6,7 @@ var pageController = require('../controllers/pageController');
 var adminController = require('../controllers/adminController');
 var cartController = require('../controllers/cartController');
 var orderController = require('../controllers/orderController');
+var quizController = require('../controllers/quizController');
 
 router.get('/', pageController.getHome);
 router.get('/about', pageController.getAbout);
@@ -20,5 +21,9 @@ router.get('/shoppingcart', ensureAuthenticated, cartController.getShoppingCart)
 
 router.get('/checkout', ensureAuthenticated, orderController.getCheckout);
 router.post('/checkout', ensureAuthenticated, orderController.postCheckout);
+
+router.get('/quiz', ensureAuthenticated, quizController.getQuiz);
+router.post('/quiz', ensureAuthenticated, quizController.postQuiz);
+
 
 module.exports = router;

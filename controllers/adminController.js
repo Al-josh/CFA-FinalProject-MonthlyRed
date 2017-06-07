@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var Order = require('../models/Order');
+var User = require('../models/User');
 
 exports.getDashboard = (req, res, next) => {
   User.find({})
