@@ -5,7 +5,7 @@ var User = require('../models/User');
 exports.getDashboard = (req, res, next) => {
   User.find({})
 .then(user => {
-    res.render('dashboard', { user: user });
+    res.render('adminDashboard', { user: user });
   });
 };
 

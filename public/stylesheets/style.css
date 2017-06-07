@@ -83,3 +83,40 @@ body {
   background-size: cover;
   height: 100vh;
 }
+
+.adminButtons {
+  display: flex;
+}
+
+.adminButton1 {
+  height: 40px;
+  text-align: center;
+  padding-top: 10px;
+  background: linear-gradient(-90deg, #642B73, #C6426E);
+}
+
+.adminButton2 {
+  height: 40px;
+  background: linear-gradient(-90deg, #C6426E, #642B73);
+  text-align: center;
+  padding-top: 10px;
+}
+
+.adminButton3 {
+  height: 40px;
+  background: linear-gradient(-90deg, #642B73, #C6426E);
+  text-align: center;
+  padding-top: 10px;
+}
+
+.textbuttons {
+  color: white;
+}
+
+.alert {
+  margin-bottom: 0px;
+}
+
+.header {
+  margin-bottom: 0px;
+}
