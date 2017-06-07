@@ -19,6 +19,9 @@
             <li role="presentation"><a href="/users/register">Register</a></li>
             <li role="presentation"><a href="/users/auth/facebook">Facebook</a></li>
             {{/if}}
+            {{#compare user.role '===' admin}}
+            <li role="presentation"><a href="/">ADMIN</a></li>
+            {{/compare}}
           </ul>
         </nav>
         <h3 class="text-muted">Monthly Red</h3>
