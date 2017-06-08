@@ -1,8 +1,8 @@
-# Monthly Red
+Monthly Red
 ========
-##### Online wine shop where you don't get a chance to choose your wine.
+Online wine shop where you don't get a chance to choose your wine.
 
-##### Overview
+Overview
 ========
 
 Monthly Red is an online wine shop where wine orders can be made online but the user will not be able to choose which bottle of wine they will receive. The website is run by a sommerlier, who will choose a special bottle of wine for the customers based on their preferences.
@@ -21,7 +21,7 @@ The deployed webpage can be found here: https://monthlyred.herokuapp.com
 * [Dependencies Used](#dependencies-used)
 * [Future of the Project](#future-of-the-project)
 
-##### Project Brief
+Project Brief
 ============
 Monthly Red is the final project I had to complete during the course at Coder Factory Academy.
 
@@ -35,20 +35,20 @@ The requirements of the project include:
 5. Entity Relationship Diagram (ERD).
 6. Project plan and effort estimation.
 
-##### Problem
+Problem
 ============
-##### Problem Description
+Problem Description
 ============
 Many of the wine consumers are not very familiar with different types of wine. Yes, we can all distinguish between red and white but if we don't pair the correct wine with our meal we might not enjoy either of them, or enjoy to a limited degree.
 
-##### Problem Solution
+Problem Solution
 ============
 Monthly Red is an online platform where users, upon registration and placing the order of the wine, will be requested to take a simple test. Based on their answers, the sommelier will choose a bottle of wine according to their taste and send it to them.
 
-#### Design Journey
+Design Journey
 ============
 
-##### User Stories
+User Stories
 ============
 User 
 --
@@ -65,7 +65,7 @@ I as an admin want to see a list of all the users so that I can see who is using
 I as an admin want to see a list of all the orders so that I know where I should send the placed orders
 I as an admin want to see the result of the quiz so that I can choose an appropriate wine for them
 
-##### Sketching
+Sketching
 ============
 
 Wireframes
@@ -83,12 +83,12 @@ Package Selection, Payment Details, Admin Page
 ![wireframes2](https://user-images.githubusercontent.com/24736380/26913866-0b30ed9a-4c61-11e7-8d6b-a422e83a66b4.jpg)
 
 
-#### Getting Started
+Getting Started
 ============
 ```
 express --view=handlebars GrapplingEducation
 ```
-#### Dependencies used:
+Dependencies used:
 ============
 ```
     "bcryptjs"
