@@ -16,8 +16,11 @@ var mongo = require('mongodb');
 var MongoStore = require('connect-mongo')(session);
 var stripe = require('stripe')(configAuth.STRIPE_TEST_SECRET_KEY);
 
+const mlabpassword = process.env.MLABPASSWORD;
+
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/MonthlyRed');
+mongoose.connect(`mongodb://monthlyred:${mlabpassword}@ds115352.mlab.com:15352/monthlyred`)
+// mongoose.connect('mongodb://localhost/MonthlyRed');
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'connection error:'));
