@@ -68,6 +68,25 @@ I as an admin want to see the result of the quiz so that I can choose an appropr
 Sketching
 ========
 
+Wireframes
+--
+User Journey
+--
+![screen shot 2017-06-08 at 3 56 15 pm](https://user-images.githubusercontent.com/24736380/26914180-2084fbee-4c63-11e7-8e7e-dba13f1e5e1d.png)
+
+Layout
+--
+Homepage
+Login Page / Register Page
+Qioz
+![wireframes1](https://user-images.githubusercontent.com/24736380/26913837-d8d0cbea-4c60-11e7-9ff4-8dc3a036afd1.jpg)
+
+Package Selection
+Payment Details
+Admin Page
+![wireframes2](https://user-images.githubusercontent.com/24736380/26913866-0b30ed9a-4c61-11e7-8d6b-a422e83a66b4.jpg)
+
+
 Getting Started
 ============
 ```
