@@ -81,7 +81,14 @@ body {
 .background-login {
   background-image: url('http://res.cloudinary.com/dzctpgu9d/image/upload/v1496278499/Capella_Vineyard_1-min_xwogwm.jpg');
   background-size: cover;
-  height: 100vh;
+  height: 80vh;
+  padding-top: 40px;
+}
+
+.background-gradient {
+  background: linear-gradient(-90deg, #1D2671, #C33764);
+  padding: 20px;
+  color: black;
 }
 
 .adminButtons {
@@ -119,4 +126,53 @@ body {
 
 .header {
   margin-bottom: 0px;
+}
+
+.profile-background {
+  /*background: linear-gradient(-90deg, rgba(195, 55, 100, 0.5), rgba(29, 38, 113, 0.5) );*/
+  background: linear-gradient(-90deg, #642B73, #C6426E);
+  color: white;
+  padding: 50px;
+}
+
+.about-page {
+  background: linear-gradient(-90deg, rgba(195, 55, 100, 0.5), rgba(29, 38, 113, 0.5) );
+}
+
+.quiz-button {
+  text-align: center;
+  height: 50px;
+  background: linear-gradient(-90deg, #642B73, #C6426E);
+  padding-top: 15px;
+  border-radius: 7px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.quiz-background {
+  background: linear-gradient(-90deg, #642B73, #C6426E);
+}
+
+.quiz-content {
+  border: 1px solid black;
+  padding: 15px;
+  background: rgba(255,255,255, 0.2);
+  border-radius: 10px;
+}
+
+.quiz-content-answers {
+  border: 1px solid black;
+  padding: 15px;
+  background: rgba(255,255,255, 0.2);
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.quiz-margin {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.shoppingcart-styling {
+  padding-top: 50px;
 }

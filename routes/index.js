@@ -13,6 +13,8 @@ router.get('/about', pageController.getAbout);
 
 router.get('/dashboard', ensureAuthenticated, ensureAdmin, adminController.getDashboard);
 router.get('/dashboard/orders', ensureAuthenticated, ensureAdmin, adminController.getDashboardOrders);
+router.get('/dashboard/quizresults', ensureAuthenticated, ensureAdmin, adminController.getQuizResults);
+
 
 router.get('/addToShoppingcart/:id', ensureAuthenticated, cartController.addToShoppingcart);
 router.get('/reduce/:id', ensureAuthenticated, cartController.reduceCart);

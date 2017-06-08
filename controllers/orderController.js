@@ -49,6 +49,7 @@ exports.postCheckout = (req, res, next) => {
     }
 
     var order = new Order({
+      user: req.user,
       firstName: req.user.firstName,
       lastName: req.user.lastName,
       email: req.user.email,
@@ -63,7 +64,7 @@ exports.postCheckout = (req, res, next) => {
 
       req.flash('success', 'Successfully bought product!');
       req.session.cart = null;
-      res.redirect('/');
+      res.redirect('/users/myorders');
     });
   });
 };
