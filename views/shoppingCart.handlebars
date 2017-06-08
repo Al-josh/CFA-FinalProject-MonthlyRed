@@ -1,36 +1,52 @@
-{{#if products}}
-  <div class="row">
-    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-      <ul class="list-group">
-        {{#each products}}
-        <li class="list-group-item">
-          <span class="badge">{{this.qty}}</span>
-          <strong>{{this.item.name}}</strong>
-          <span class="label label-success">AUD {{this.price}}</span>
-          <a href="/reduce/{{this.item._id}}"><button type="button" class="btn btn-primary">Reduce by One</button></a>
-          <a href="/remove/{{this.item._id}}"><button type="button" class="btn btn-primary">Remove All</button></a>
-        </li>
-        {{/each}}
-      </ul>
-    </div>
+<div class="shoppingcart-styling">
+  <div class="container">
+    {{#if products}}
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <ul class="list-group">
+            {{#each products}}
+            <li class="list-group-item">
+              <span class="badge">{{this.qty}}</span>
+              <strong>{{this.item.name}}</strong>
+              <span class="label label-success">AUD {{this.price}}</span>
+              <a href="/reduce/{{this.item._id}}"><button type="button" class="btn btn-primary">Reduce by One</button></a>
+              <a href="/remove/{{this.item._id}}"><button type="button" class="btn btn-primary">Remove All</button></a>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+          <strong>Total: AUD {{totalPrice}} </strong>
+        </div>
+      </div>
+      <hr>
+      <div class="row">
+        <a href="/quiz" class="textbuttons">
+        <div class="quiz-button col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
+          Step 1: TAKE A QUIZ
+        </div>
+        </a>
+      </div>
+      <div class="row">
+        <a href="/checkout" class="textbuttons">
+          <div class="quiz-button col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
+          Step 2: CHECKOUT
+        </div>
+        </a>
+      </div>
+
+    {{else}}
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+          <h2>No items in the shopping cart</h2>
+        </div>
+      </div>
+    {{/if}}
   </div>
-  <div class="row">
-    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-      <strong>Total: AUD {{totalPrice}} </strong>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-      <a href="/checkout" type="button" class="btn btn-success">Checkout</a>
-    </div>
-  </div>
-{{else}}
-  <div class="row">
-    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-      <h2>No items in the shopping cart</h2>
-    </div>
-  </div>
-{{/if}}
+</div>
+
+
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>

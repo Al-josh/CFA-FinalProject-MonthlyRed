@@ -11,6 +11,7 @@ exports.postRegister = (req, res, next) => {
     var lastName = req.body.lastName;
     var email = req.body.email;
     var username = req.body.username;
+    var deliveryAddress = req.body.deliveryAddress;
     var password = req.body.password;
     var password2 = req.body.password2;
     var password2 = req.body.password2;
@@ -22,6 +23,7 @@ exports.postRegister = (req, res, next) => {
     req.checkBody('email', 'Email is required').notEmpty();
     req.checkBody('email', 'Email is not valid').isEmail();
     req.checkBody('username', 'Username is required').notEmpty();
+    req.checkBody('deliveryAddress', 'Delivery Address is required').notEmpty();
     req.checkBody('password', 'Password is required').notEmpty();
     req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
     req.checkBody('ageConfirmation', 'Please confirm if you are 18 years of age of older').notEmpty();
@@ -37,6 +39,7 @@ exports.postRegister = (req, res, next) => {
           firstName: firstName,
           lastName: lastName,
           email: email,
+          deliveryAddress: deliveryAddress,
           username: username,
           password: password,
         });

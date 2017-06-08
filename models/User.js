@@ -18,6 +18,10 @@ var UserSchema = mongoose.Schema({
     lastName: {
       type: String,
     },
+    deliveryAddress: {
+      type: String,
+    },
+
     role: {
       type: String,
       default: 'normalUser',

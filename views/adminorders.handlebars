@@ -1,5 +1,17 @@
 <div class="container">
-  <h3>My orders</h3>
+  <div class="row adminButtons">
+    <div class="col-sm-4 col-md-4 adminButton1">
+      <a href="/dashboard" class="textbuttons">Dashboard</a>
+    </div>
+    <div class="col-sm-4 col-md-4 adminButton2">
+      <a href="/dashboard/orders" class="textbuttons">Orders</a>
+    </div>
+    <div class="col-sm-4 col-md-4 adminButton3">
+      <a href="/dashboard/quizresults" class="textbuttons">Quiz Results</a>
+    </div>
+  </div>
+
+  <h3>All Orders</h3>
   {{#each order}}
     <div class="panel panel-default">
       <div class="panel-body">

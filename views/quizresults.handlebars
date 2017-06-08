@@ -10,20 +10,16 @@
       <a href="/dashboard/quizresults" class="textbuttons">Quiz Results</a>
     </div>
   </div>
-  <table class="table">
-  <tr>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    <th>Delivery Address</th>
-  </tr>
-  {{#each user}}
-  <tr>
-    <td>{{firstName}}{{facebook.firstName}}</td>
-    <td>{{lastName}}{{facebook.lastName}}</td>
-    <td>{{email}}{{facebook.email}}</td>
-    <td>{{deliveryAddress}}</td>
-  </tr>
+
+  {{#each quiz}}
+  <div class="quiz-content-answers">
+    <p>Name: {{this.firstName}} {{this.lastName}}</p>
+    <p>Email: {{this.email}}</p>
+    <p>Answer 1: {{this.answer1}}</p>
+    <p>Answer 2: {{this.answer2}}</p>
+    <p>Answer 3: {{this.answer3}}</p>
+    <p>Answer 4: {{this.answer4}}</p>
+    <p>Answer 5: {{this.answer5}}</p>
+  </div>
   {{/each}}
-  </table>
 </div>
