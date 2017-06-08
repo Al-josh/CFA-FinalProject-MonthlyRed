@@ -50,7 +50,7 @@ Design Journey
 
 User Stories
 --
-User 
+##### User 
 
 I as a user want to be able to log in so that I can see the content of the website/app
 I as a user want to be able to see the description of each package so that I can make my decision easily
@@ -59,7 +59,7 @@ I as a user want to subscribe so that I can receive wine monthly
 I as a user want to make payments online
 I as a user want to see a history of my purchases
 
-Admin
+##### Admin
 
 I as an admin want to see a list of all the users so that I can see who is using my website
 I as an admin want to see a list of all the orders so that I know where I should send the placed orders
@@ -67,11 +67,11 @@ I as an admin want to see the result of the quiz so that I can choose an appropr
 
 Sketching
 --
-User Journey
+##### User Journey
 
 ![screen shot 2017-06-08 at 3 56 15 pm](https://user-images.githubusercontent.com/24736380/26914180-2084fbee-4c63-11e7-8e7e-dba13f1e5e1d.png)
 
-Layout
+##### Layout
 
 Homepage, Login Page / Register Page, Quiz
 ![wireframes1](https://user-images.githubusercontent.com/24736380/26913837-d8d0cbea-4c60-11e7-9ff4-8dc3a036afd1.jpg)
