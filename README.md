@@ -37,15 +37,15 @@ The requirements of the project include:
 
 Problem
 --
-Problem Description
+##### Problem Description
 
 Many of the wine consumers are not very familiar with different types of wine. Yes, we can all distinguish between red and white but if we don't pair the correct wine with our meal we might not enjoy either of them, or enjoy to a limited degree.
 
-Problem Solution
+##### Problem Solution
 
 Monthly Red is an online platform where users, upon registration and placing the order of the wine, will be requested to take a simple test. Based on their answers, the sommelier will choose a bottle of wine according to their taste and send it to them.
 
-Design Journey
+#### Design Journey
 
 
 User Stories
