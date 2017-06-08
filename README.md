@@ -3,7 +3,7 @@ Monthly Red
 Online wine shop where you don't get a chance to choose your wine.
 
 ##### Overview
-======
+--------
 
 Monthly Red is an online wine shop where wine orders can be made online but the user will not be able to choose which bottle of wine they will receive. The website is run by a sommerlier, who will choose a special bottle of wine for the customers based on their preferences.
 The deployed webpage can be found here: https://monthlyred.herokuapp.com
